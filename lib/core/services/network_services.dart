@@ -2,8 +2,11 @@ import 'package:dio/dio.dart';
 
 abstract class NetworkServices {
   Future get(String url);
-  Future put(String url);
+
   Future post(String url);
+
+  Future put(String url);
+
   Future delete(String url);
 }
 
@@ -16,13 +19,13 @@ class NetworkServicesImpl implements NetworkServices {
   }
 
   @override
-  Future put(String url) async {
-    return await dio.put(url);
+  Future post(String url) async {
+    return await dio.post(url);
   }
 
   @override
-  Future post(String url) async {
-    return await dio.post(url);
+  Future put(String url) async {
+    return await dio.put(url);
   }
 
   @override
