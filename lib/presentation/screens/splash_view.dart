@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:note/presentation/screens/home_view.dart';
 
 class SplashView extends StatefulWidget {
@@ -35,6 +36,22 @@ class _SplashViewState extends State<SplashView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0.0,
+        systemOverlayStyle: const SystemUiOverlayStyle(
+            statusBarColor: Colors.white,
+            statusBarIconBrightness: Brightness.dark),
+      ),
+      body: const Center(
+        child: Image(
+          image: AssetImage('assets/images/splash_icon.GIF'),
+          height: 2000,
+          width: 2000,
+        ),
+      ),
+    );
   }
 }
