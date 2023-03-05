@@ -2,14 +2,14 @@ import 'package:note/data/models/note_mode.dart';
 
 import '../../data/data_source/remote_data_source.dart';
 
-abstract class GetNotesRepository {
+abstract class NotesRepository {
   Future<List<NoteModel>> getNotes();
 }
 
-class GetNotesRepositoryImpl implements GetNotesRepository {
+class NotesRepositoryImpl implements NotesRepository {
   final RemoteDataSourceImpl _remoteDataSourceImpl;
 
-  GetNotesRepositoryImpl(this._remoteDataSourceImpl);
+  NotesRepositoryImpl(this._remoteDataSourceImpl);
 
   @override
   Future<List<NoteModel>> getNotes() async {
