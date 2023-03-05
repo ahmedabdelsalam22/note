@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../core/router/router.dart';
+import '../../data/models/note_mode.dart';
 
 class NoteItem extends StatelessWidget {
   const NoteItem({
     Key? key,
+    required this.noteModel,
   }) : super(key: key);
+
+  final NoteModel noteModel;
 
   @override
   Widget build(BuildContext context) {
