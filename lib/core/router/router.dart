@@ -5,6 +5,7 @@ import '../../presentation/screens/home_view.dart';
 
 class Routes {
   static const String homeViewRoute = "HomeView";
+  static const String splashView = "SplashView";
 }
 
 class AppRouter {
