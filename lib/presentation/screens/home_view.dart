@@ -18,7 +18,7 @@ class HomeView extends StatelessWidget {
               icon: Icons.search,
             ),
             const SizedBox(height: 30),
-            //  const NotesListView(),
+            const NotesListView(),
           ],
         ),
       ),
