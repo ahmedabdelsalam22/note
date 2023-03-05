@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: AppTheme.lightTheme,
-      initialRoute: Routes.splashView,
+      initialRoute: Routes.splashViewRoute,
       onGenerateRoute: AppRouter.onGenerateRoute,
     );
   }
