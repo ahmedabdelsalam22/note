@@ -2,7 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:note/presentation/screens/home_view.dart';
+
+import '../../core/router/router.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({Key? key}) : super(key: key);
@@ -16,9 +17,7 @@ class _SplashViewState extends State<SplashView> {
 
   _startDelay() {
     _timer = Timer(const Duration(seconds: 5), () {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-        return const HomeView();
-      }));
+      Navigator.pushReplacementNamed(context, Routes.homeViewRoute);
     });
   }
 
