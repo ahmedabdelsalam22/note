@@ -37,4 +37,23 @@ class NoteCubit extends Cubit<NoteState> {
       print(e.toString());
     }
   }
+
+  void createNote({
+    required String title,
+    required String content,
+    required String date,
+  }) {
+    emit(state);
+    try {
+      emit(state);
+      _notesRepository.createNote({
+        "title": title,
+        "content": content,
+        "date": date,
+      });
+      emit(state);
+    } catch (e) {
+      emit(state);
+    }
+  }
 }
