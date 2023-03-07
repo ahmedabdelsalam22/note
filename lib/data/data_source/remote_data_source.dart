@@ -29,4 +29,9 @@ class RemoteDataSourceImpl implements RemoteDataSource {
   Future<void> deleteNote(int id) async {
     await _networkServices.delete("https://localhost:44382/api/Notes/$id");
   }
+
+  @override
+  Future<void> createNote(String url, Map<String, dynamic> query) async {
+    await _networkServices.post(url, query);
+  }
 }
