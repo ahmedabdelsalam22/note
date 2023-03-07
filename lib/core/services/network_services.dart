@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 abstract class NetworkServices {
   Future<Response> get(String url);
 
-  Future post(String url);
+  Future<void> post(String url, Map<String, dynamic> query);
 
   Future put(String url);
 
@@ -19,8 +19,8 @@ class NetworkServicesImpl implements NetworkServices {
   }
 
   @override
-  Future post(String url) async {
-    return await dio.post(url);
+  Future<void> post(String url, Map<String, dynamic> query) async {
+    await dio.post(url, queryParameters: query);
   }
 
   @override
