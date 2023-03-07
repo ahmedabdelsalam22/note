@@ -12,4 +12,10 @@ class DeleteNotesLoadingState extends NoteState {}
 
 class DeleteNotesSuccessState extends NoteState {}
 
-class GetDeleteNotesErrorState extends NoteState {}
+class DeleteNotesErrorState extends NoteState {}
+
+class CreateNotesLoadingState extends NoteState {}
+
+class CreateNotesSuccessState extends NoteState {}
+
+class CreateNotesErrorState extends NoteState {}

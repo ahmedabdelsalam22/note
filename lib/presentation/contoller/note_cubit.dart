@@ -33,27 +33,27 @@ class NoteCubit extends Cubit<NoteState> {
       _notesRepository.deleteNote(id);
       emit(DeleteNotesSuccessState());
     } catch (e) {
-      emit(GetDeleteNotesErrorState());
+      emit(DeleteNotesErrorState());
       print(e.toString());
     }
   }
 
-  void createNote({
+  Future<void> createNote({
     required String title,
     required String content,
     required String date,
-  }) {
-    emit(state);
+  }) async {
+    emit(CreateNotesLoadingState());
     try {
-      emit(state);
       _notesRepository.createNote({
         "title": title,
         "content": content,
         "date": date,
       });
-      emit(state);
+      await getNotes();
+      emit(CreateNotesSuccessState());
     } catch (e) {
-      emit(state);
+      emit(CreateNotesErrorState());
     }
   }
 }
