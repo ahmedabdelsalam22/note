@@ -3,14 +3,17 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../core/router/router.dart';
 import '../../data/models/note_mode.dart';
+import '../contoller/note_cubit.dart';
 
 class NoteItem extends StatelessWidget {
   const NoteItem({
     Key? key,
     required this.noteModel,
+    required this.cubit,
   }) : super(key: key);
 
   final NoteModel noteModel;
+  final NoteCubit cubit;
 
   @override
   Widget build(BuildContext context) {
@@ -32,21 +35,24 @@ class NoteItem extends StatelessWidget {
               children: [
                 ListTile(
                   textColor: Colors.black,
-                  title: const Text(
-                    'title',
-                    style: TextStyle(fontSize: 23),
+                  title: Text(
+                    noteModel.title,
+                    style: const TextStyle(fontSize: 23),
                   ),
                   subtitle: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      'subTitle',
+                      noteModel.content,
                       style: TextStyle(color: Colors.black.withOpacity(.4)),
                     ),
                   ),
                   trailing: IconButton(
                     icon: const Icon(FontAwesomeIcons.trash),
                     color: Colors.black,
-                    onPressed: () {},
+                    onPressed: () {
+                      ///TODO :DELETE NOTE
+                      cubit.deleteNote(noteModel.id);
+                    },
                   ),
                 ),
                 const SizedBox(
@@ -57,7 +63,7 @@ class NoteItem extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      'date',
+                      noteModel.date,
                       style: TextStyle(color: Colors.black.withOpacity(.4)),
                     ),
                   ),

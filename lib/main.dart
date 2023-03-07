@@ -3,8 +3,14 @@ import 'package:flutter/material.dart';
 import 'core/router/router.dart';
 import 'core/style/theme.dart';
 
-void main() {
+Future<void> main() async {
   runApp(const MyApp());
+
+/*  final dio = Dio();
+
+  final response =
+      await dio.get("https://localhost:44382/api/Notes/getAllNotes");
+  print(response.data);*/
 }
 
 class MyApp extends StatelessWidget {
