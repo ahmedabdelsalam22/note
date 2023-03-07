@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
 abstract class NetworkServices {
-  Future get(String url);
+  Future<Response> get(String url);
 
   Future post(String url);
 
@@ -11,10 +11,10 @@ abstract class NetworkServices {
 }
 
 class NetworkServicesImpl implements NetworkServices {
-  final dio = Dio();
+  final Dio dio = Dio();
 
   @override
-  Future get(String url) async {
+  Future<Response> get(String url) async {
     return await dio.get(url);
   }
 

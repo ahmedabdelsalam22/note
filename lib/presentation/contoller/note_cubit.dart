@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note/data/models/note_mode.dart';
 
-import '../../domain/repository/get_notes_repository.dart';
-
-part 'note_state.dart';
+import '../../domain/repository/notes_repository.dart';
+import 'note_state.dart';
 
 class NoteCubit extends Cubit<NoteState> {
   NoteCubit(this._notesRepository) : super(NoteInitial());
@@ -14,6 +13,7 @@ class NoteCubit extends Cubit<NoteState> {
   static NoteCubit get(context) => BlocProvider.of(context);
 
   List<NoteModel>? noteModel;
+
   Future<void> getNotes() async {
     emit(GetNotesLoadingState());
     await _notesRepository.getNotes().then((value) {
@@ -23,6 +23,18 @@ class NoteCubit extends Cubit<NoteState> {
       emit(GetNotesSuccessState());
     }).catchError((onError) {
       emit(GetNotesErrorState());
+      print("Error when get notes$onError");
     });
+  }
+
+  void deleteNote(int id) {
+    emit(DeleteNotesLoadingState());
+    try {
+      _notesRepository.deleteNote(id);
+      emit(DeleteNotesSuccessState());
+    } catch (e) {
+      emit(GetDeleteNotesErrorState());
+      print(e.toString());
+    }
   }
 }
