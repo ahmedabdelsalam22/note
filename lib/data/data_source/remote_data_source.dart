@@ -5,7 +5,8 @@ abstract class RemoteDataSource {
   Future<List<NoteModel>> getNotes();
 
   Future<void> deleteNote(int id);
-  Future<void> createNote(String url, Map<String, dynamic> query);
+
+  Future<void> createNote(Map<String, dynamic> query);
 }
 
 class RemoteDataSourceImpl implements RemoteDataSource {
@@ -31,7 +32,7 @@ class RemoteDataSourceImpl implements RemoteDataSource {
   }
 
   @override
-  Future<void> createNote(String url, Map<String, dynamic> query) async {
-    await _networkServices.post(url, query);
+  Future<void> createNote(Map<String, dynamic> query) async {
+    await _networkServices.post("https://localhost:44382/api/Notes", query);
   }
 }
