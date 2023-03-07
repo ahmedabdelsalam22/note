@@ -5,6 +5,7 @@ abstract class RemoteDataSource {
   Future<List<NoteModel>> getNotes();
 
   Future<void> deleteNote(int id);
+  Future<void> createNote(String url, Map<String, dynamic> query);
 }
 
 class RemoteDataSourceImpl implements RemoteDataSource {
