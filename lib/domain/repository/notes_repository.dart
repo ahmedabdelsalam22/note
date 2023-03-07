@@ -5,6 +5,7 @@ import '../../data/data_source/remote_data_source.dart';
 abstract class NotesRepository {
   Future<List<NoteModel>> getNotes();
   void deleteNote(int id);
+  void createNote(Map<String, dynamic> query);
 }
 
 class NotesRepositoryImpl implements NotesRepository {
@@ -18,7 +19,12 @@ class NotesRepositoryImpl implements NotesRepository {
   }
 
   @override
-  void deleteNote(int id) {
-    _remoteDataSource.deleteNote(id);
+  void deleteNote(int id) async {
+    await _remoteDataSource.deleteNote(id);
+  }
+
+  @override
+  void createNote(Map<String, dynamic> query) {
+    _remoteDataSource.createNote(query);
   }
 }
