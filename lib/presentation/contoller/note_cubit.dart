@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note/data/models/note_mode.dart';
+import 'package:note/presentation/screens/home_view.dart';
 
 import '../../domain/repository/notes_repository.dart';
 import 'note_state.dart';
@@ -42,6 +43,7 @@ class NoteCubit extends Cubit<NoteState> {
     required String title,
     required String content,
     required String date,
+    required BuildContext context
   }) async {
     emit(CreateNotesLoadingState());
     try {
@@ -50,7 +52,8 @@ class NoteCubit extends Cubit<NoteState> {
         "content": content,
         "date": date,
       });
-      await getNotes();
+       getNotes();
+      Navigator.push(context, MaterialPageRoute(builder: ((context) =>const HomeView())));
       emit(CreateNotesSuccessState());
     } catch (e) {
       emit(CreateNotesErrorState());

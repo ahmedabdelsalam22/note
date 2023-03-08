@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:note/presentation/screens/edit_note_view.dart';
 
-import '../../core/router/router.dart';
 import '../../data/models/note_mode.dart';
 import '../contoller/note_cubit.dart';
 
@@ -19,7 +19,12 @@ class NoteItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, Routes.editNoteViewRoute);
+        // Navigator.pushNamed(context, Routes.editNoteViewRoute);
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => EditNoteView(),
+            ));
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),

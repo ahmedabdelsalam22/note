@@ -4,7 +4,12 @@ import '../widgets/custom_app_bar.dart';
 import '../widgets/custom_text_field.dart';
 
 class EditNoteView extends StatelessWidget {
-  const EditNoteView({Key? key}) : super(key: key);
+  EditNoteView({
+    Key? key,
+  }) : super(key: key);
+
+  final titleController = TextEditingController();
+  final subtitleController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
