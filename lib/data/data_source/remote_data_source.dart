@@ -8,7 +8,7 @@ abstract class RemoteDataSource {
 
   Future<void> createNote(Map<String, dynamic> query);
 
-  Future<void> updateNote(int id);
+  Future<void> updateNote(int id, Map<String, dynamic> body);
 }
 
 class RemoteDataSourceImpl implements RemoteDataSource {
@@ -39,7 +39,7 @@ class RemoteDataSourceImpl implements RemoteDataSource {
   }
 
   @override
-  Future<void> updateNote(int id) async {
-    await _networkServices.put("https://localhost:44382/api/Notes/$id");
+  Future<void> updateNote(int id, Map<String, dynamic> body) async {
+    await _networkServices.put("https://localhost:44382/api/Notes/$id", body);
   }
 }

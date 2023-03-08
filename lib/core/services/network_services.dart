@@ -5,7 +5,7 @@ abstract class NetworkServices {
 
   Future<void> post(String url, Map<String, dynamic> query);
 
-  Future put(String url);
+  Future put(String url, Map<String, dynamic> body);
 
   Future delete(String url);
 }
@@ -19,13 +19,13 @@ class NetworkServicesImpl implements NetworkServices {
   }
 
   @override
-  Future<void> post(String url, Map<String, dynamic> query) async {
-    await dio.post(url, data: query);
+  Future<void> post(String url, Map<String, dynamic> body) async {
+    await dio.post(url, data: body);
   }
 
   @override
-  Future put(String url) async {
-    return await dio.put(url);
+  Future put(String url, Map<String, dynamic> body) async {
+    return await dio.put(url, data: body);
   }
 
   @override
