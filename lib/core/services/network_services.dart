@@ -20,7 +20,7 @@ class NetworkServicesImpl implements NetworkServices {
 
   @override
   Future<void> post(String url, Map<String, dynamic> query) async {
-    await dio.post(url, queryParameters: query);
+    await dio.post(url, data: query);
   }
 
   @override
