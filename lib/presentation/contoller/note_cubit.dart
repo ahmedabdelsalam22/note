@@ -39,17 +39,29 @@ class NoteCubit extends Cubit<NoteState> {
     }
   }
 
+  void updateNote(
+      {required int id, required String title, required String content}) {
+    try {
+      _notesRepository.updateNote(id, {
+        "title": title,
+        "content": content,
+        "date": DateTime.now(),
+      });
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
   Future<void> createNote(
       {required String title,
       required String content,
-      required String date,
       required BuildContext context}) async {
     emit(CreateNotesLoadingState());
     try {
       _notesRepository.createNote({
         "title": title,
         "content": content,
-        "date": date,
+        "date": DateTime.now(),
       });
       getNotes();
       Navigator.push(

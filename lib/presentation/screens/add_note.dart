@@ -5,13 +5,12 @@ import '../widgets/custom_app_bar.dart';
 import '../widgets/custom_text_field.dart';
 
 class AddNote extends StatelessWidget {
-   AddNote
-({super.key, required this.noteCubit});
+  AddNote({super.key, required this.noteCubit});
 
-final NoteCubit? noteCubit;
+  final NoteCubit? noteCubit;
 
-final titleController = TextEditingController();
-final subTitleController = TextEditingController();
+  final titleController = TextEditingController();
+  final subTitleController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +26,10 @@ final subTitleController = TextEditingController();
               title: 'Edit',
               icon: Icons.check,
               onPressedIcon: () {
-                  noteCubit!.createNote(
-                    title: titleController.text, 
+                noteCubit!.createNote(
+                    title: titleController.text,
                     content: subTitleController.text,
-                     date: DateTime.now().toString(),context: context
-                    );
+                    context: context);
               },
             ),
             const SizedBox(
@@ -50,7 +48,7 @@ final subTitleController = TextEditingController();
               hint: 'subTitle',
               maxLine: 5,
               onChange: (value) {
-                 subTitleController.text = value;
+                subTitleController.text = value;
               },
             ),
           ],
