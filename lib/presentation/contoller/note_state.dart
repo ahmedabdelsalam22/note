@@ -19,3 +19,9 @@ class CreateNotesLoadingState extends NoteState {}
 class CreateNotesSuccessState extends NoteState {}
 
 class CreateNotesErrorState extends NoteState {}
+
+class EditNotesLoadingState extends NoteState {}
+
+class EditNotesSuccessState extends NoteState {}
+
+class EditNotesErrorState extends NoteState {}

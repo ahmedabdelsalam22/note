@@ -40,15 +40,24 @@ class NoteCubit extends Cubit<NoteState> {
   }
 
   void updateNote(
-      {required int id, required String title, required String content}) {
+      {required int id,
+      required String title,
+      required String content,
+      required BuildContext context}) {
     try {
+      emit(EditNotesLoadingState());
       _notesRepository.updateNote(id, {
         "title": title,
         "content": content,
         "date": DateTime.now(),
       });
+      getNotes();
+      Navigator.push(
+          context, MaterialPageRoute(builder: ((context) => const HomeView())));
+      emit(EditNotesSuccessState());
     } catch (e) {
       debugPrint(e.toString());
+      emit(EditNotesErrorState());
     }
   }
 

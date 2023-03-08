@@ -23,7 +23,10 @@ class NoteItem extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => EditNoteView(),
+              builder: (context) => EditNoteView(
+                cubit: cubit,
+                noteModel: noteModel,
+              ),
             ));
       },
       child: Padding(
