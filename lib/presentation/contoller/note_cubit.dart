@@ -39,12 +39,11 @@ class NoteCubit extends Cubit<NoteState> {
     }
   }
 
-  Future<void> createNote({
-    required String title,
-    required String content,
-    required String date,
-    required BuildContext context
-  }) async {
+  Future<void> createNote(
+      {required String title,
+      required String content,
+      required String date,
+      required BuildContext context}) async {
     emit(CreateNotesLoadingState());
     try {
       _notesRepository.createNote({
@@ -52,10 +51,12 @@ class NoteCubit extends Cubit<NoteState> {
         "content": content,
         "date": date,
       });
-       getNotes();
-      Navigator.push(context, MaterialPageRoute(builder: ((context) =>const HomeView())));
+      getNotes();
+      Navigator.push(
+          context, MaterialPageRoute(builder: ((context) => const HomeView())));
       emit(CreateNotesSuccessState());
     } catch (e) {
+      debugPrint(e.toString());
       emit(CreateNotesErrorState());
     }
   }
