@@ -23,7 +23,7 @@ class AddNote extends StatelessWidget {
               height: 50,
             ),
             CustomAppBar(
-              title: 'Edit',
+              title: 'Add Note',
               icon: Icons.check,
               onPressedIcon: () {
                 noteCubit!.createNote(

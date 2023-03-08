@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:note/data/models/note_mode.dart';
+import 'package:note/presentation/contoller/note_cubit.dart';
 
 import '../widgets/custom_app_bar.dart';
 import '../widgets/custom_text_field.dart';
@@ -6,10 +8,15 @@ import '../widgets/custom_text_field.dart';
 class EditNoteView extends StatelessWidget {
   EditNoteView({
     Key? key,
+    this.cubit,
+    this.noteModel,
   }) : super(key: key);
 
   final titleController = TextEditingController();
   final subtitleController = TextEditingController();
+
+  final NoteCubit? cubit;
+  final NoteModel? noteModel;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +31,13 @@ class EditNoteView extends StatelessWidget {
             CustomAppBar(
               title: 'Edit',
               icon: Icons.check,
-              onPressedIcon: () {},
+              onPressedIcon: () {
+                cubit!.updateNote(
+                    id: noteModel!.id,
+                    title: titleController.text,
+                    content: subtitleController.text,
+                    context: context);
+              },
             ),
             const SizedBox(
               height: 50,
