@@ -6,6 +6,7 @@ abstract class NotesRepository {
   Future<List<NoteModel>> getNotes();
   void deleteNote(int id);
   void createNote(Map<String, dynamic> query);
+  void updateNote(int id);
 }
 
 class NotesRepositoryImpl implements NotesRepository {
@@ -26,5 +27,10 @@ class NotesRepositoryImpl implements NotesRepository {
   @override
   void createNote(Map<String, dynamic> query) {
     _remoteDataSource.createNote(query);
+  }
+
+  @override
+  void updateNote(int id) {
+    _remoteDataSource.updateNote(id);
   }
 }
