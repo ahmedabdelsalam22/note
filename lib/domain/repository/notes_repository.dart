@@ -4,8 +4,11 @@ import '../../data/data_source/remote_data_source.dart';
 
 abstract class NotesRepository {
   Future<List<NoteModel>> getNotes();
+
   void deleteNote(int id);
+
   void createNote(Map<String, dynamic> query);
+
   void updateNote(int id, Map<String, dynamic> body);
 }
 

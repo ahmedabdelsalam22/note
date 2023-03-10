@@ -28,7 +28,7 @@ class NoteCubit extends Cubit<NoteState> {
       emit(GetNotesSuccessState());
     }).catchError((onError) {
       emit(GetNotesErrorState());
-      print("Error when get notes$onError");
+      debugPrint("Error when get notes$onError");
     });
   }
 
@@ -76,11 +76,11 @@ class NoteCubit extends Cubit<NoteState> {
     }
   }
 
-  void deleteNote(int id) async {
+  void deleteNote(int id) {
     emit(DeleteNotesLoadingState());
     try {
       _notesRepository.deleteNote(id);
-      await getNotes();
+      getNotes();
       emit(DeleteNotesSuccessState());
     } catch (e) {
       emit(DeleteNotesErrorState());
