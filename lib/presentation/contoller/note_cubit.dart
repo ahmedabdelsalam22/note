@@ -28,14 +28,24 @@ class NoteCubit extends Cubit<NoteState> {
     });
   }
 
-  void deleteNote(int id) {
-    emit(DeleteNotesLoadingState());
+  Future<void> createNote(
+      {required String title,
+      required String content,
+      required BuildContext context}) async {
+    emit(CreateNotesLoadingState());
     try {
-      _notesRepository.deleteNote(id);
-      emit(DeleteNotesSuccessState());
+      _notesRepository.createNote({
+        "title": title,
+        "content": content,
+        "date": DateTime.now(),
+      });
+      getNotes();
+      Navigator.push(
+          context, MaterialPageRoute(builder: ((context) => const HomeView())));
+      emit(CreateNotesSuccessState());
     } catch (e) {
-      emit(DeleteNotesErrorState());
-      print(e.toString());
+      debugPrint(e.toString());
+      emit(CreateNotesErrorState());
     }
   }
 
@@ -61,24 +71,15 @@ class NoteCubit extends Cubit<NoteState> {
     }
   }
 
-  Future<void> createNote(
-      {required String title,
-      required String content,
-      required BuildContext context}) async {
-    emit(CreateNotesLoadingState());
+  void deleteNote(int id) {
+    emit(DeleteNotesLoadingState());
     try {
-      _notesRepository.createNote({
-        "title": title,
-        "content": content,
-        "date": DateTime.now(),
-      });
+      _notesRepository.deleteNote(id);
       getNotes();
-      Navigator.push(
-          context, MaterialPageRoute(builder: ((context) => const HomeView())));
-      emit(CreateNotesSuccessState());
+      emit(DeleteNotesSuccessState());
     } catch (e) {
-      debugPrint(e.toString());
-      emit(CreateNotesErrorState());
+      emit(DeleteNotesErrorState());
+      print(e.toString());
     }
   }
 }
