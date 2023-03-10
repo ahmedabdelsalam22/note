@@ -20,8 +20,8 @@ class NotesRepositoryImpl implements NotesRepository {
   }
 
   @override
-  void deleteNote(int id) async {
-    await _remoteDataSource.deleteNote(id);
+  void deleteNote(int id) {
+    _remoteDataSource.deleteNote(id);
   }
 
   @override

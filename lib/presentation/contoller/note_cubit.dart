@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:note/data/models/note_mode.dart';
 import 'package:note/presentation/screens/home_view.dart';
 
@@ -12,6 +13,9 @@ class NoteCubit extends Cubit<NoteState> {
   final NotesRepository _notesRepository;
 
   static NoteCubit get(context) => BlocProvider.of(context);
+
+  String formattedDate =
+      DateFormat('yyyy-MM-dd – kk:mm').format(DateTime.now());
 
   List<NoteModel>? noteModel;
 
@@ -37,7 +41,7 @@ class NoteCubit extends Cubit<NoteState> {
       _notesRepository.createNote({
         "title": title,
         "content": content,
-        "date": DateTime.now().toString(),
+        "date": formattedDate,
       });
       getNotes();
       // ignore: use_build_context_synchronously
@@ -60,7 +64,7 @@ class NoteCubit extends Cubit<NoteState> {
       _notesRepository.updateNote(id, {
         "title": title,
         "content": content,
-        "date": DateTime.now().toString(),
+        "date": formattedDate,
       });
       getNotes();
       Navigator.push(
@@ -72,11 +76,11 @@ class NoteCubit extends Cubit<NoteState> {
     }
   }
 
-  void deleteNote(int id) {
+  void deleteNote(int id) async {
     emit(DeleteNotesLoadingState());
     try {
       _notesRepository.deleteNote(id);
-      getNotes();
+      await getNotes();
       emit(DeleteNotesSuccessState());
     } catch (e) {
       emit(DeleteNotesErrorState());
