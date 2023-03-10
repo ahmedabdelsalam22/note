@@ -37,9 +37,10 @@ class NoteCubit extends Cubit<NoteState> {
       _notesRepository.createNote({
         "title": title,
         "content": content,
-        "date": DateTime.now(),
+        "date": DateTime.now().toString(),
       });
       getNotes();
+      // ignore: use_build_context_synchronously
       Navigator.push(
           context, MaterialPageRoute(builder: ((context) => const HomeView())));
       emit(CreateNotesSuccessState());
@@ -79,7 +80,7 @@ class NoteCubit extends Cubit<NoteState> {
       emit(DeleteNotesSuccessState());
     } catch (e) {
       emit(DeleteNotesErrorState());
-      print(e.toString());
+      debugPrint(e.toString());
     }
   }
 }
