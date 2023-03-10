@@ -65,9 +65,13 @@ class HomeView extends StatelessWidget {
                   ),
                 ),
                 floatingActionButton: FloatingActionButton(
-                  onPressed: ()
-                  {
-                    Navigator.push(context, MaterialPageRoute(builder: ((context) => AddNote(noteCubit: cubit,))));
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: ((context) => AddNote(
+                                  noteCubit: cubit,
+                                ))));
                   },
                   child: const Icon(Icons.add),
                 ));
