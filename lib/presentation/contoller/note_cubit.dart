@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note/data/models/note_mode.dart';
+import 'package:note/presentation/screens/home_view.dart';
 
 import '../../domain/repository/notes_repository.dart';
 import 'note_state.dart';
@@ -51,7 +52,8 @@ class NoteCubit extends Cubit<NoteState> {
         "date": DateTime.now().toString(),
       });
       getNotes();
-      Navigator.pop;
+      Navigator.push(
+          context, MaterialPageRoute(builder: ((context) => const HomeView())));
       emit(EditNotesSuccessState());
     } catch (e) {
       debugPrint(e.toString());
@@ -71,7 +73,8 @@ class NoteCubit extends Cubit<NoteState> {
         "date": DateTime.now(),
       });
       getNotes();
-      Navigator.pop;
+      Navigator.push(
+          context, MaterialPageRoute(builder: ((context) => const HomeView())));
       emit(CreateNotesSuccessState());
     } catch (e) {
       debugPrint(e.toString());
