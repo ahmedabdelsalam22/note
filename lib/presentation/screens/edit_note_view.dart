@@ -44,7 +44,9 @@ class EditNoteView extends StatelessWidget {
             ),
             CustomTextField(
               hint: 'title',
-              onChange: (value) {},
+              onChange: (value) {
+                titleController.text = value;
+              },
             ),
             const SizedBox(
               height: 15,
@@ -52,7 +54,9 @@ class EditNoteView extends StatelessWidget {
             CustomTextField(
               hint: 'subTitle',
               maxLine: 5,
-              onChange: (value) {},
+              onChange: (value) {
+                subtitleController.text = value;
+              },
             ),
           ],
         ),
